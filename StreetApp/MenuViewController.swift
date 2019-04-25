@@ -20,16 +20,16 @@ class MenuViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidLoad()
         let scale = CGAffineTransform(scaleX: 0.5,y: 0.5)
-        let translate = CGAffineTransform(translationX: 0, y: 300)
+        let translate = CGAffineTransform(translationX: 0, y: -300)
         //может не правильно, надо запомнить
         dialogView.transform = scale.concatenating (translate)
         
-        UIView.animate(withDuration: 1.0) {
+        UIView.animate(withDuration: 0.5) {
             let scale = CGAffineTransform(scaleX: 1,y: 1)
             let translate = CGAffineTransform(translationX: 0, y: 0)
             self.dialogView.transform = scale.concatenating (translate)
         }
-        
+         
     }
     
     
@@ -41,11 +41,27 @@ class MenuViewController: UIViewController {
         addBlurEffect(view: headerView, style: .dark)
         addBlurEffect(view: buttomView, style: .dark)
         
-       
-        
-        
     }
   
+    
+    @IBAction func handleRecognizer(_ sender: Any) {
+        let location = (sender as AnyObject).location(in: view)
+        dialogView.center = location
+        
+        if (sender as AnyObject).state == UIGestureRecognizer.State.began {
+            dialogView.center = location
+        }
+        else if (sender as AnyObject).state == UIGestureRecognizer.State.changed {
+            dialogView.center = location
+        }
+        else if (sender as AnyObject).state == UIGestureRecognizer.State.ended {
+            dialogView.isHidden = true
+        }
+    }
+    
+    
+    
+    
     func addBlurEffect  (view: UIView, style: UIBlurEffect.Style) {
         
         view.backgroundColor = UIColor.clear

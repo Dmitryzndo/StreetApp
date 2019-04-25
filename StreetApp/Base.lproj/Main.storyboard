@@ -82,11 +82,15 @@
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="dy8-bD-oeS" appends="YES" id="Z2v-ra-eMy"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" id="Zfk-zP-ip9">
                                         <rect key="frame" x="76" y="432" width="230" height="55"/>
@@ -181,6 +185,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="dy8-bD-oeS">
+                    <connections>
+                        <action selector="handleRecognizer:" destination="BYZ-38-t0r" id="wRQ-1q-Ojh"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-42" y="130"/>
         </scene>
