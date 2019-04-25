@@ -17,7 +17,20 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var userView: UIView!
     @IBOutlet weak var dialogView: UIView!
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidLoad()
+        let scale = CGAffineTransform(scaleX: 0.5,y: 0.5)
+        let translate = CGAffineTransform(translationX: 0, y: 300)
+        //может не правильно, надо запомнить
+        dialogView.transform = scale.concatenating (translate)
+        
+        UIView.animate(withDuration: 1.0) {
+            let scale = CGAffineTransform(scaleX: 1,y: 1)
+            let translate = CGAffineTransform(translationX: 0, y: 0)
+            self.dialogView.transform = scale.concatenating (translate)
+        }
+        
+    }
     
     
     override func viewDidLoad() {
@@ -27,6 +40,10 @@ class MenuViewController: UIViewController {
         addBlurEffect(view: backgroundMaskView, style: .dark)
         addBlurEffect(view: headerView, style: .dark)
         addBlurEffect(view: buttomView, style: .dark)
+        
+       
+        
+        
     }
   
     func addBlurEffect  (view: UIView, style: UIBlurEffect.Style) {
