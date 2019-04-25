@@ -14,10 +14,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="StreetApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MenuViewController" customModule="StreetApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,6 +50,9 @@
                                                         <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-5" maxY="0.0"/>
                                                         <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="Open post" image="menu-hamburger"/>
+                                                        <connections>
+                                                            <segue destination="5oo-ov-fva" kind="modal" animates="NO" modalTransitionStyle="crossDissolve" id="U6M-Us-yBt"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -121,7 +124,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <view contentMode="scaleToFill" id="eZ2-2V-aTS">
+                                    <view hidden="YES" contentMode="scaleToFill" id="eZ2-2V-aTS">
                                         <rect key="frame" x="47" y="472" width="280" height="195"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
@@ -169,15 +172,22 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="backgroundMaskView" destination="hBV-hY-TwJ" id="5zV-gy-382"/>
+                        <outlet property="buttomView" destination="qJ3-iS-HBy" id="vBl-L6-Dhr"/>
+                        <outlet property="dialogView" destination="csr-Vr-vhM" id="cYH-v2-Lvh"/>
+                        <outlet property="headerView" destination="9aJ-TI-A43" id="6Lo-0Z-M9F"/>
+                        <outlet property="userView" destination="Zfk-zP-ip9" id="5WX-cW-rtk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-40.799999999999997" y="129.98500749625188"/>
+            <point key="canvasLocation" x="-42" y="130"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="uXa-kO-h5d">
             <objects>
-                <viewController id="5oo-ov-fva" sceneMemberID="viewController">
+                <viewController id="5oo-ov-fva" customClass="DetailViewController" customModule="StreetApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U2p-do-OZE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -258,6 +268,9 @@
                                 <rect key="frame" x="16" y="34" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="button-back"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="modal" id="xDD-Bg-ZsU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -265,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ulX-Pk-PWZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="597.60000000000002" y="129.98500749625188"/>
+            <point key="canvasLocation" x="732" y="130"/>
         </scene>
     </scenes>
     <resources>
