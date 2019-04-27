@@ -17,6 +17,12 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var userView: UIView!
     @IBOutlet weak var dialogView: UIView!
     
+    var animator: UIDynamicAnimator!
+    var attachmentBehavior: UIAttachmentBehavior!
+    var snapBehavior: UISnapBehavior!
+    
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidLoad()
         let scale = CGAffineTransform(scaleX: 0.5,y: 0.5)
@@ -40,16 +46,27 @@ class MenuViewController: UIViewController {
         addBlurEffect(view: backgroundMaskView, style: .dark)
         addBlurEffect(view: headerView, style: .dark)
         addBlurEffect(view: buttomView, style: .dark)
+       
+        animator = UIDynamicAnimator(referenceView: view)
+        snapBehavior = UISnapBehavior(item: dialogView, snapTo: view.center)
         
     }
   
     
     @IBAction func handleRecognizer(_ sender: Any) {
+        let myView = dialogView
         let location = (sender as AnyObject).location(in: view)
+        let boxLocation = (sender as AnyObject).location(in: dialogView)
         dialogView.center = location
         
         if (sender as AnyObject).state == UIGestureRecognizer.State.began {
-            dialogView.center = location
+            animator.removeBehavior(snapBehavior)
+            //пробую пересторить формулу - разница в swift поколениях
+            let centerOffset = UIOffset(horizontal: boxLocation.x - (myView?.bounds.midX)!,
+                                        vertical: boxLocation.y - (myView?.bounds.midY)!)
+            attachmentBehavior = UIAttachmentBehavior(item: myView!, offsetFromCenter: centerOffset, attachedToAnchor: location)
+            attachmentBehavior.frequency = 0
+            animator.addBehavior(attachmentBehavior)
         }
         else if (sender as AnyObject).state == UIGestureRecognizer.State.changed {
             dialogView.center = location
