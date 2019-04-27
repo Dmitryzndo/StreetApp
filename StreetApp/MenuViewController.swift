@@ -67,6 +67,9 @@ class MenuViewController: UIViewController {
             attachmentBehavior = UIAttachmentBehavior(item: myView!, offsetFromCenter: centerOffset, attachedToAnchor: location)
             attachmentBehavior.frequency = 0
             animator.addBehavior(attachmentBehavior)
+            UIView.animate(withDuration: 0.5) {
+                self.userView.frame = CGRect(x: 73, y: 485, width: 230, height: 55)
+            }
         }
         else if (sender as AnyObject).state == UIGestureRecognizer.State.changed {
             attachmentBehavior.anchorPoint = location
