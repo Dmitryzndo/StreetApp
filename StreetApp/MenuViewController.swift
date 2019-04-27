@@ -69,10 +69,12 @@ class MenuViewController: UIViewController {
             animator.addBehavior(attachmentBehavior)
         }
         else if (sender as AnyObject).state == UIGestureRecognizer.State.changed {
-            dialogView.center = location
+            attachmentBehavior.anchorPoint = location
         }
         else if (sender as AnyObject).state == UIGestureRecognizer.State.ended {
-            dialogView.isHidden = true
+            animator.removeBehavior(attachmentBehavior)
+            snapBehavior = UISnapBehavior(item: myView!, snapTo: view.center)
+            animator.addBehavior(snapBehavior )
         }
     }
     
